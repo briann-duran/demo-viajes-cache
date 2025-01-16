@@ -84,7 +84,7 @@ docker run -d \
   mysql:8
 
 ```
-Para almcenar los datos en caché, se utilza el mismo contenedor del microservicio ubicacion-service, `redis-ubicacion-service`.
+Para almcenar los datos en caché, se utilza el mismo contenedor del microservicio puntos-de-venta-service, `redis-ubicacion-service`.
 
 
 ### Paso 3: Construir los Microservicios
