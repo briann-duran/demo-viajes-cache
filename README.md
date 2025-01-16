@@ -14,7 +14,7 @@ Este proyecto es un sistema que calcula los costos de viaje entre diferentes pun
 - **MySQL**: Base de datos relacional para el almacenamiento de datos persistentes.
 
 ### Microservicios
-1. **ubicacion-service**:
+1. **puntos-de-venta-service**:
    - Maneja la lógica de negocio de los puntos de venta.
    - Utiliza MySQL y Redis.
 
