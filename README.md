@@ -101,7 +101,7 @@ Ejecuta los miroservicios en el siguiente orden:
 
 1. **eureka-server**.
 2. **Iniciar contenedores**.
-3. **puntos-de-veta-service**.
+3. **puntos-de-venta-service**.
 4. **costo-service**.
 ---
 
