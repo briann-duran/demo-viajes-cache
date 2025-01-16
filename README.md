@@ -22,17 +22,17 @@ Este proyecto es un sistema que calcula los costos de viaje entre diferentes pun
    - Gestiona la lógica de negocio de los costos de viaje entre puntos de venta.
    - Utiliza MySQL y Redis.
 
-3. **Librería Personalizada**:
+3. **commons-service**:
    - Contiene clases reutilizables comunes a todos los microservicios para evitar duplicación de código.
 
 ### Docker
-- Contenedores para MySQL, Redis y cada microservicio, lo que facilita el despliegue.
+- Contenedores para MySQL y Redis, lo que facilita el despliegue sin tener que instalar, configuar y verificar, versiones necesarias de cada programa.
 
 ---
 
 ## Requisitos Previos
 
-1. **Docker** instalado y configurado.
+1. **Docker** instalado.
 2. **Java 23**.
 3. **Maven** para la gestión de dependencias.
 
@@ -42,12 +42,12 @@ Este proyecto es un sistema que calcula los costos de viaje entre diferentes pun
 
 ### Paso 1: Clonar el Repositorio
 ```bash
-git clone https://github.com/usuario/sistema-calculo-costos.git
-cd sistema-calculo-costos
+
+git clone https://github.com/briann-duran/demo-viajes-cache.git
 ```
 
 ### Paso 2: Configurar y ejecutar los Contenedores en Docker
-Mysql8 para el microservicio ubicacion-service
+Mysql8 para el microservicio `puntos-de-venta-service`
 
 ```Mysql
 docker run -d \
@@ -61,7 +61,7 @@ docker run -d \
 
 ```
 
-Redis para el microservicio ubicacion-service
+Redis para el microservicio `puntos-de-venta-service`
 
 ```Redis
 docker run -d \
@@ -71,7 +71,7 @@ docker run -d \
 
 ```
 
-Mysql8 para el microservicio costos-service
+Mysql8 para el microservicio `costo-service`
 
 ```Mysql
 docker run -d \
@@ -90,9 +90,9 @@ Para almcenar los datos en caché, se utilza el mismo contenedor del microservic
 ### Paso 3: Construir los Microservicios
 Compila los microservicios utilizando Maven:
 ```bash
-cd ubicacion-service
+cd puntos-de-venta-service
 mvn clean install
-cd ../viaje-service
+cd ../costo-service
 mvn clean install
 ```
 
@@ -101,15 +101,15 @@ Ejecuta los miroservicios en el siguiente orden:
 
 1. **eureka-server**.
 2. **Iniciar contenedores**.
-3. **ubicacion-service**.
-4. **ecostos-service**.
+3. **puntos-de-veta-service**.
+4. **costo-service**.
 ---
 
 ## Probar el Sistema
 
 ### Endpoints Disponibles
 
-1. **ubicacion-service**:
+1. **puntos-de-veta-service**:
    - Crear un punto de venta:
      ```http
      POST /api/v1/ubicacion
@@ -123,10 +123,10 @@ Ejecuta los miroservicios en el siguiente orden:
      ```
     - Eliminar ubicacion por Id:
      ```http
-     delte /api/v1/ubicacion/{id}
+     delete /api/v1/ubicacion/{id}
      ```
 
-2. **viaje-service**:
+2. **costo-service**:
    - Calcular el costo de un viaje (en mantenimiento):
      ```http
      POST /api/v1/viajes
